@@ -6,7 +6,7 @@ Requires=local-fs.target
 [Service]
 Type=forking
 ExecStart=/home/gui/Minecraft/minecraft-servers start
-ExecStop=/home/gui/Minecraft/minecraft-servers.sh stop
+ExecStop=/home/gui/Minecraft/minecraft-servers stop
 ExecStopPost=/bin/bash -c 'while screen -list | grep -q "minecraft"; do sleep 1; done'
 WorkingDirectory=/home/gui/Minecraft
 User=gui
