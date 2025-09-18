@@ -1,0 +1,18 @@
+[Unit]
+Description=Minecraft Server Launcher
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/home/gui/Minecraft/minecraft-servers.sh start-one minecraft-paper
+ExecStop=/home/gui/Minecraft/minecraft-servers.sh stop
+ExecStopPost=/bin/bash -c 'while screen -list | grep -q "minecraft"; do sleep 1; done'
+WorkingDirectory=/home/gui/Minecraft
+User=gui
+Group=gui
+TimeoutStopSec=15s
+KillMode=none
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
